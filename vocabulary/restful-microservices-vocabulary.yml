@@ -1,0 +1,99 @@
+vocabulary:
+  name: RESTful Microservices Vocabulary
+  description: Domain vocabulary for RESTful microservices architecture, patterns, and tooling
+  version: 1.0.0
+  created: '2026-05-02'
+  modified: '2026-05-02'
+  tags:
+    - Architecture
+    - Microservices
+    - Distributed Systems
+
+terms:
+  - term: Microservice
+    definition: A small, independently deployable service that implements a single bounded context of business functionality. Microservices communicate with each other via REST APIs, message queues, or gRPC.
+    category: Core Concept
+    relatedTerms:
+      - Bounded Context
+      - Service Mesh
+
+  - term: Bounded Context
+    definition: A design principle from Domain-Driven Design (DDD) defining the scope of a domain model. Each microservice owns its bounded context and data.
+    category: Architecture Pattern
+    relatedTerms:
+      - Microservice
+
+  - term: Service Mesh
+    definition: An infrastructure layer for microservice-to-microservice communication providing service discovery, load balancing, traffic management, and mutual TLS. Examples: Istio, Linkerd.
+    category: Infrastructure
+    relatedTerms:
+      - Sidecar Proxy
+      - mTLS
+
+  - term: API Gateway
+    definition: A reverse proxy that serves as the single entry point for external clients to a microservices system, handling authentication, routing, rate limiting, and request aggregation.
+    category: Pattern
+    relatedTerms:
+      - Microservice
+
+  - term: Sidecar Proxy
+    definition: A co-deployed proxy container (e.g., Envoy) that intercepts network traffic for a microservice, enabling service mesh capabilities without modifying application code.
+    category: Infrastructure
+    relatedTerms:
+      - Service Mesh
+
+  - term: Saga
+    definition: A microservices pattern for managing distributed transactions as a sequence of local transactions, each publishing events to trigger the next step.
+    category: Pattern
+    relatedTerms:
+      - Distributed Transaction
+
+  - term: CQRS
+    definition: Command Query Responsibility Segregation — separating read (query) and write (command) operations into different models, often used with event sourcing in microservices.
+    category: Pattern
+    relatedTerms:
+      - Event Sourcing
+
+  - term: Event Sourcing
+    definition: A pattern where state changes are stored as a sequence of immutable events rather than the current state, enabling replay and audit trails.
+    category: Pattern
+    relatedTerms:
+      - CQRS
+
+  - term: Circuit Breaker
+    definition: A resilience pattern that prevents cascading failures by monitoring service calls and failing fast when a service is unhealthy, allowing it time to recover.
+    category: Resilience Pattern
+
+  - term: Service Discovery
+    definition: The mechanism by which microservices locate each other's network addresses. Can be client-side (e.g., Ribbon) or server-side (e.g., AWS ALB).
+    category: Infrastructure
+
+  - term: Health Check
+    definition: An HTTP endpoint (e.g., /health, /actuator/health) that reports a service's operational status, used by orchestrators for routing and autoscaling decisions.
+    category: Operations
+
+  - term: Distributed Tracing
+    definition: The practice of tracking requests as they propagate across multiple microservices, using correlation IDs and trace contexts. Standards: OpenTelemetry, Zipkin, Jaeger.
+    category: Observability
+
+  - term: OpenTelemetry
+    definition: The CNCF standard for collecting distributed traces, metrics, and logs from microservices. Provides vendor-neutral instrumentation SDKs.
+    category: Standard
+    relatedTerms:
+      - Distributed Tracing
+
+  - term: 12-Factor App
+    definition: A methodology for building modern, cloud-native microservices covering configuration, statelessness, logging, and process management.
+    category: Methodology
+
+  - term: mTLS
+    definition: Mutual TLS — bidirectional TLS authentication where both client and server present certificates. Used in service meshes for zero-trust inter-service security.
+    category: Security
+    relatedTerms:
+      - Service Mesh
+
+  - term: Idempotency Key
+    definition: A client-provided unique key for a POST request to ensure the operation is not duplicated if the request is retried due to network issues.
+    category: Pattern
+    relatedTerms:
+      - REST

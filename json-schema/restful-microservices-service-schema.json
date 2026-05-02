@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restful-microservices/refs/heads/main/json-schema/restful-microservices-service-schema.json",
+  "title": "Microservice",
+  "description": "Represents a RESTful microservice in a distributed system — an independently deployable service unit that communicates via HTTP REST APIs and is governed by a bounded context.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the microservice."
+    },
+    "name": {
+      "type": "string",
+      "description": "Service name, typically in kebab-case (e.g., 'order-service')."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the service's bounded context and responsibilities."
+    },
+    "version": {
+      "type": "string",
+      "description": "Service version following semantic versioning.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "baseUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Base URL of the service's REST API."
+    },
+    "healthEndpoint": {
+      "type": "string",
+      "description": "Health check endpoint path (e.g., '/health', '/actuator/health')."
+    },
+    "apiSpec": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the OpenAPI specification for this service."
+    },
+    "team": {
+      "type": "string",
+      "description": "Owning team or squad name."
+    },
+    "language": {
+      "type": "string",
+      "description": "Primary programming language (e.g., 'Java', 'Go', 'Python', 'Node.js')."
+    },
+    "framework": {
+      "type": "string",
+      "description": "Web framework used (e.g., 'Spring Boot', 'Express', 'FastAPI', 'Go Fiber')."
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "Other microservices this service depends on.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serviceId": {"type": "string"},
+          "serviceName": {"type": "string"},
+          "communicationType": {
+            "type": "string",
+            "enum": ["synchronous", "asynchronous", "event-driven"]
+          }
+        },
+        "required": ["serviceId"]
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Domain tags for the service (e.g., 'Orders', 'Payments', 'Users').",
+      "items": {"type": "string"}
+    }
+  },
+  "required": ["name", "version"]
+}

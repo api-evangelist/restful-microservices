@@ -1,0 +1,99 @@
+{
+  "description": "Example of inter-service communication in a RESTful microservices architecture demonstrating the order-fulfillment workflow across Order, Inventory, Payment, and Notification services",
+  "architecture": "RESTful Microservices",
+  "workflow": "Order Fulfillment",
+  "services": [
+    {
+      "name": "order-service",
+      "baseUrl": "http://order-service:8080",
+      "responsibility": "Manages order lifecycle and state"
+    },
+    {
+      "name": "inventory-service",
+      "baseUrl": "http://inventory-service:8081",
+      "responsibility": "Manages product stock and reservations"
+    },
+    {
+      "name": "payment-service",
+      "baseUrl": "http://payment-service:8082",
+      "responsibility": "Processes payment transactions"
+    },
+    {
+      "name": "notification-service",
+      "baseUrl": "http://notification-service:8083",
+      "responsibility": "Sends emails, SMS, and push notifications"
+    }
+  ],
+  "flow": [
+    {
+      "step": 1,
+      "from": "API Gateway",
+      "to": "order-service",
+      "request": {
+        "method": "POST",
+        "url": "http://order-service:8080/v1/orders",
+        "body": {
+          "customerId": "cust_789",
+          "items": [{"sku": "WH-001", "quantity": 1}]
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": {"orderId": "ord_456", "status": "pending"}
+      }
+    },
+    {
+      "step": 2,
+      "from": "order-service",
+      "to": "inventory-service",
+      "request": {
+        "method": "POST",
+        "url": "http://inventory-service:8081/v1/reservations",
+        "body": {
+          "orderId": "ord_456",
+          "items": [{"sku": "WH-001", "quantity": 1}]
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {"reservationId": "res_123", "status": "reserved"}
+      }
+    },
+    {
+      "step": 3,
+      "from": "order-service",
+      "to": "payment-service",
+      "request": {
+        "method": "POST",
+        "url": "http://payment-service:8082/v1/charges",
+        "body": {
+          "orderId": "ord_456",
+          "amount": 79.99,
+          "currency": "USD"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {"chargeId": "ch_999", "status": "succeeded"}
+      }
+    },
+    {
+      "step": 4,
+      "from": "order-service",
+      "to": "notification-service",
+      "request": {
+        "method": "POST",
+        "url": "http://notification-service:8083/v1/notifications",
+        "body": {
+          "customerId": "cust_789",
+          "type": "order-confirmation",
+          "orderId": "ord_456"
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": {"notificationId": "notif_321", "status": "queued"}
+      }
+    }
+  ]
+}

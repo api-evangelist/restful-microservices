@@ -1,0 +1,78 @@
+{
+  "name": "Microservice",
+  "description": "Structure documentation for a RESTful microservice in a distributed system",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "Unique service identifier"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "description": "Service name in kebab-case"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Bounded context description"
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "required": true,
+      "description": "Semantic version number"
+    },
+    {
+      "name": "baseUrl",
+      "type": "string (uri)",
+      "required": false,
+      "description": "Service REST API base URL"
+    },
+    {
+      "name": "healthEndpoint",
+      "type": "string",
+      "required": false,
+      "description": "Health check path"
+    },
+    {
+      "name": "apiSpec",
+      "type": "string (uri)",
+      "required": false,
+      "description": "Link to OpenAPI specification"
+    },
+    {
+      "name": "team",
+      "type": "string",
+      "required": false,
+      "description": "Owning team name"
+    },
+    {
+      "name": "language",
+      "type": "string",
+      "required": false,
+      "description": "Programming language"
+    },
+    {
+      "name": "framework",
+      "type": "string",
+      "required": false,
+      "description": "Web framework"
+    },
+    {
+      "name": "dependencies",
+      "type": "array<ServiceDependency>",
+      "required": false,
+      "description": "Upstream service dependencies"
+    },
+    {
+      "name": "tags",
+      "type": "array<string>",
+      "required": false,
+      "description": "Domain classification tags"
+    }
+  ]
+}
