@@ -27,6 +27,8 @@ artifacts:
   - type: Vocabulary
     url: https://raw.githubusercontent.com/api-evangelist/restful-microservices/refs/heads/main/vocabulary/restful-microservices-vocabulary.yml
 common:
+  - type: DomainSecurity
+    url: security/restful-microservices-domain-security.yml
   - type: Website
     url: https://microservices.io/
   - type: 12 Factor App
