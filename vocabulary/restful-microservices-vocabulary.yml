@@ -24,7 +24,7 @@ terms:
       - Microservice
 
   - term: Service Mesh
-    definition: An infrastructure layer for microservice-to-microservice communication providing service discovery, load balancing, traffic management, and mutual TLS. Examples: Istio, Linkerd.
+    definition: "An infrastructure layer for microservice-to-microservice communication providing service discovery, load balancing, traffic management, and mutual TLS. Examples: Istio, Linkerd."
     category: Infrastructure
     relatedTerms:
       - Sidecar Proxy
@@ -73,7 +73,7 @@ terms:
     category: Operations
 
   - term: Distributed Tracing
-    definition: The practice of tracking requests as they propagate across multiple microservices, using correlation IDs and trace contexts. Standards: OpenTelemetry, Zipkin, Jaeger.
+    definition: "The practice of tracking requests as they propagate across multiple microservices, using correlation IDs and trace contexts. Standards: OpenTelemetry, Zipkin, Jaeger."
     category: Observability
 
   - term: OpenTelemetry
