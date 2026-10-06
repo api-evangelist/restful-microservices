@@ -49,7 +49,7 @@ tags_raw:
   - Service Mesh
   - Cloud Native
 created: '2025-01-01'
-modified: '2026-05-02'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis: []
 artifacts:
@@ -58,6 +58,8 @@ artifacts:
   - type: Vocabulary
     url: https://raw.githubusercontent.com/api-evangelist/restful-microservices/refs/heads/main/vocabulary/restful-microservices-vocabulary.yml
 common:
+  - url: https://microservices.io/feed.xml
+    type: BlogRSS
   - type: DomainSecurity
     url: security/restful-microservices-domain-security.yml
   - type: Website
